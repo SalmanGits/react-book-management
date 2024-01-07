@@ -1,0 +1,46 @@
+.input_parent_div {
+    width: 100%;
+  }
+  .label_style {
+    display: inline-block;
+    padding-bottom: 10px;
+    padding-left: 3px;
+    font-family: var(--fontFamily-sansSerif);
+  }
+  
+  /* .input_wrapper {
+    border: 1px solid rgb(155, 155, 155);
+    border-radius: 5px;
+    display: flex;
+    align-items: center !important;
+    height: 40px;
+    width: 100%;
+    background-color: var(--white-color);
+  } */
+  .add_input {
+    width: '100%';
+    padding: '10px';
+    margin: '10px 0';
+    border-radius: '5px';
+    border: '1px solid #ccc';
+    font-Size: var(--font-x-small);
+  }
+  .input_eye_btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10%;
+    font-size: 20px;
+    color: #353535;
+    cursor: pointer;
+  }
+  
+  .input_error {
+    color: rgb(241, 1, 1);
+    font-size: var(--font-xxsmall);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
+  
+
+  

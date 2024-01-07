@@ -1,0 +1,14 @@
+
+  
+  .submit_btn {
+    /* width: 10px; */
+    height: 40px;
+    background-color: var(--secondary-color);
+    font-size: var(--fontSize-xx-small);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0;
+  }
+  
