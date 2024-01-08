@@ -9,7 +9,7 @@ import { AppFonts } from "../../../../public/font/font";
 import Input from "../../library/input/Input";
 import showToast from "../../utils/toast";
 import tableColumns from "../../utils/column";
-
+import { useDebounce } from "use-debounce";
 
 
 
@@ -17,28 +17,32 @@ const SearchBooks = () => {
   const dispatch = useDispatch()
   const data = useSelector((state) => state.books.searchedBook)
   const [title, setTitle] = useState("")
+  const [debouncedValue] = useDebounce(title, 500);
   const columns = useMemo(
     () => tableColumns,
     []
   );
   useEffect(() => {
+
     const fetchdata = async () => {
-      const res = await BookService.searchBook(title)
-      console.log(res)
-      if (!res.success) {
-        showToast(res.message, "error")
+      if (title.trim() !== "") {
+        const res = await BookService.searchBook(debouncedValue)
+        console.log(res)
+        if (!res.success) {
+          showToast(res.message, "error")
+
+        }
+        else {
+          dispatch(setSearchedBook(res.data))
+        }
+
+
 
       }
-      else {
-        dispatch(setSearchedBook(res.data))
-      }
-
-
-
     }
 
     fetchdata()
-  }, [title])
+  }, [debouncedValue, dispatch])
   const handleInputChange = (e) => {
     setTitle(e.target.value)
   }

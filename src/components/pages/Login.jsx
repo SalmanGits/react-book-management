@@ -7,9 +7,12 @@ import { AuthService } from '../../service/auth.service'
 import showToast from '../utils/toast'
 import { Link, useNavigate } from 'react-router-dom'
 import { setLocalStorage } from '../../storage/LocalStorage'
+import { useDispatch } from 'react-redux'
+import { setAuthenticated } from '../../features/book.reducer'
 
 
 const Login = () => {
+  const dispatch = useDispatch()
   const navigate = useNavigate()
   const [formData, setFormData] = useState({
     email: '',
@@ -49,6 +52,8 @@ const Login = () => {
         showToast(res.message, "success");
         setLocalStorage("token", res.data.token)
         setLocalStorage("user", res.data.user.id)
+        dispatch(setAuthenticated(true))
+
         navigate("/")
       }
     }
@@ -104,10 +109,9 @@ const Login = () => {
         onClickEvent={handleSubmit}
         text="Login"
         style={{
-          backgroundColor: AppColor.primaryColor,
           fontWeight: AppFonts.fontMedium,
           fontSize: AppFonts.fontSizeXSmall,
-          padding: "5px 20px",
+
         }}
         className="submit_btn"
       />

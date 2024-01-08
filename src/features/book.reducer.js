@@ -4,7 +4,8 @@ const initialState = {
   allBookData: [],
   userBook: [],
   searchedBook: [],
-  refresh: false
+  refresh: false,
+  isAuthenticated: false
 }
 
 export const userSlice = createSlice({
@@ -22,12 +23,15 @@ export const userSlice = createSlice({
     },
     setRefresh: (state, action) => {
       state.refresh = !state.refresh
+    },
+    setAuthenticated: (state, action) => {
+      state.isAuthenticated = action.payload
     }
 
 
   },
 })
 
-export const { setAllBookData, setUserBook, setSearchedBook, setRefresh } = userSlice.actions
+export const { setAllBookData, setUserBook, setSearchedBook, setRefresh, setAuthenticated } = userSlice.actions
 
 export default userSlice.reducer

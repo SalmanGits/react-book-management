@@ -83,9 +83,9 @@ const Addbook = () => {
         value={bookData.title}
         eye=""
         labelStyle={{
-          color: AppColor.lightGreyColor,
           fontSize: AppFonts.fontSizeXSmall,
           fontWeight: AppFonts.fontSemiBold,
+
         }}
 
       />
@@ -101,9 +101,10 @@ const Addbook = () => {
         eye=""
 
         labelStyle={{
-          color: AppColor.lightGreyColor,
+
           fontSize: AppFonts.fontSizeXSmall,
           fontWeight: AppFonts.fontSemiBold,
+
         }}
 
       />
@@ -127,10 +128,11 @@ const Addbook = () => {
         onClickEvent={handleSubmit}
         text="Submit"
         style={{
-          backgroundColor: AppColor.primaryColor,
+
           fontWeight: AppFonts.fontMedium,
           fontSize: AppFonts.fontSizeXSmall,
           padding: "5px 20px",
+          margin: "8px"
         }}
         className="submit_btn"
       />

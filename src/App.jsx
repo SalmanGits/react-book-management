@@ -2,7 +2,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import './App.css'
-import { useEffect, useState } from 'react'
+
 
 import Home from './components/pages/home/Home';
 import Login from './components/pages/Login';
@@ -17,40 +17,20 @@ import AllBooks from './components/pages/allbooks/AllBooks';
 import Sidebar from './components/pages/sidebar/Sidebar';
 import Addbook from './components/pages/addbook/Addbook';
 import { getLocalStorage } from './storage/LocalStorage';
-import Layout from './components/layout/Layout';
+
 
 function App() {
-  // const { token } = getLocalStorage("token")
-  // console.log("app", token)
-  // const [value, setValue] = useState()
-  // const dispatch = useDispatch()
-  // const { bookData, book } = useSelector((state) => state.books)
-  // console.log(bookData)
-  // console.log(book)
-  // const handleChange = () => {
-  //   dispatch(setBookData(value))
-  // }
+
+  const isAuthenticated = useSelector((state) => state.books.isAuthenticated)
+  const {token} = getLocalStorage("token")
 
 
-  const [token, setToken] = useState(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const storedToken = getLocalStorage('token');
-      if (storedToken) {
-        setToken(storedToken.token);
-      }
-    };
-
-    fetchData();
-  }, [token]);
-  console.log(token, "app")
 
   return (
     <>
 
       <BrowserRouter>
-        {token && <Sidebar />}
+        {(isAuthenticated || token) && <Sidebar />}
         <ToastContainer
           position="top-right"
           autoClose={3000}

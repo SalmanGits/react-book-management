@@ -11,8 +11,8 @@ import { useDispatch } from 'react-redux';
 import { setRefresh } from '../../../features/book.reducer';
 
 
-const WTable = ({ columns, data }) => {
-    const dispatch =useDispatch()
+const WTable = ({ columns, data, button }) => {
+    const dispatch = useDispatch()
     const {
         getTableProps,
         getTableBodyProps,
@@ -31,8 +31,8 @@ const WTable = ({ columns, data }) => {
         else {
             showToast(res.message, "success")
             dispatch(setRefresh())
-            
-            
+
+
 
         }
     }
@@ -44,13 +44,13 @@ const WTable = ({ columns, data }) => {
                         {headerGroup.headers.map((column) => (
                             <th {...column.getHeaderProps()}>{column.render('Header')}</th>
                         ))}
-                        <th>Action</th>
+                        {button ? <th>Action</th> : ""}
                     </tr>
                 ))}
             </thead>
             <tbody {...getTableBodyProps()}>
                 {rows.map((row) => {
-
+                    console.log(row)
                     prepareRow(row);
                     return (
 
@@ -58,27 +58,31 @@ const WTable = ({ columns, data }) => {
                             {row.cells.map((cell) => (
                                 <>
 
-                                    <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                                    <td {...cell.getCellProps()}> {cell?.column?.id === 'createdAt' ? (
+                                        row?.original?.createdAt.split("T")[0]
+                                    ) : (
+                                        cell.render('Cell')
+                                    )}</td>
 
 
 
                                 </>
                             ))}
-                            <td>
+                            {button ? <td>
 
 
                                 <Button
                                     onClickEvent={() => handleClick(row.original._id)}
                                     text="Unpublish"
                                     style={{
-                                        backgroundColor: AppColor.primaryColor,
+
                                         fontWeight: AppFonts.fontMedium,
                                         fontSize: AppFonts.fontSizeXSmall,
                                         padding: "5px 20px",
                                     }}
                                     className="submit_btn"
                                 />
-                            </td>
+                            </td> : ""}
                         </tr>
 
 

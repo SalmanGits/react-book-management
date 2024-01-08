@@ -63,7 +63,7 @@ const AllBooks = () => {
                     className="submit_btn"
                 />
             </div>
-            <WTable columns={columns} data={data} />
+            <WTable columns={columns} data={data} button={true} />
 
             <Pagination page={page} setPage={setPage} totalCount={totalCount} totalPages={totalPages} setPerPage={setPerPage} perPage={perPage} />
         </div>

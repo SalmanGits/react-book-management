@@ -138,10 +138,10 @@ const Signup = () => {
                 onClickEvent={handleSubmit}
                 text="Signup"
                 style={{
-                    backgroundColor: AppColor.primaryColor,
                     fontWeight: AppFonts.fontMedium,
                     fontSize: AppFonts.fontSizeXSmall,
                     padding: "5px 20px",
+                    margin: "9px"
                 }}
                 className="submit_btn"
             />
