@@ -25,20 +25,20 @@ const SearchBooks = () => {
   useEffect(() => {
 
     const fetchdata = async () => {
-      if (title.trim() !== "") {
-        const res = await BookService.searchBook(debouncedValue)
-        console.log(res)
-        if (!res.success) {
-          showToast(res.message, "error")
 
-        }
-        else {
-          dispatch(setSearchedBook(res.data))
-        }
-
-
+      const res = await BookService.searchBook(debouncedValue)
+      console.log(res)
+      if (!res.success) {
+        showToast(res.message, "error")
 
       }
+      else {
+        dispatch(setSearchedBook(res.data))
+      }
+
+
+
+
     }
 
     fetchdata()
