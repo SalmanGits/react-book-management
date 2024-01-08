@@ -2,11 +2,11 @@
 import { useTable } from 'react-table';
 import "./style.css"
 import Button from '../button/Button';
-import { AppColor } from '../../../../public/style/color';
+
 import { AppFonts } from '../../../../public/font/font';
 import { BookService } from '../../../service/book.service';
 import showToast from '../../utils/toast';
-import { useState } from 'react';
+
 import { useDispatch } from 'react-redux';
 import { setRefresh } from '../../../features/book.reducer';
 
