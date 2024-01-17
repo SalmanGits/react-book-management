@@ -31,7 +31,11 @@ const AllBooks = () => {
     );
     const fetchdata = async () => {
         const res = await BookService.getAllBooks(page, perPage)
-        console.log(res)
+        if (!res.success) {
+            localStorage.clear()
+
+            navigate("/login")
+        }
         dispatch(setAllBookData(res.data))
         setTotalPages(res.totalPages)
         setTotalCount(res.totalCount)
